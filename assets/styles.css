@@ -1,0 +1,871 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+
+main {
+    flex: 1 0 auto;
+    padding-top: 0rem;
+    padding: 0rem;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: #333;
+    margin-right: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 2.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 450;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.3rem;
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+.logo-authors {
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 100;
+    flex-direction: column;
+    align-items: center; /* Center align the items vertically */
+}
+
+.authors {
+    font-size: 1.1rem; /* Adjust font size as needed */
+    font-weight: 500;
+}
+
+section {
+    margin-bottom: 3.75rem;
+}
+
+h1, h2 {
+    margin-bottom: 1.25rem;
+}
+
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 0rem;
+    margin-bottom: 12rem;
+    background-color: white; /* Added background color for contrast */
+}
+
+.text-content {
+    z-index: 10;
+    display: flex;
+    flex-direction: column; /* Display content vertically */
+    align-items: center;
+    text-align: center; /* Center text alignment */
+    gap: 1.5rem; /* Increased space between elements */
+}
+
+#hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem; /* Reduced font size */
+    color: black;
+    margin: 0;
+    margin-top: -2rem;
+    line-height: 1.2; /* Ensures better spacing in multiline titles */
+}
+
+
+#hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem; /* Reduced font size */
+    color: #5b85b6;
+    margin: 0rem;
+    line-height: 1.2; /* Ensures better spacing in multiline titles */
+}
+
+
+#hero .contributors{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem; /* Slightly reduced font size */
+    font-weight:400;
+    color: black;
+    margin: 0;
+}
+
+#hero .text-link {
+    color: #70a7ff;
+    text-decoration: none;
+}
+
+#hero .text-link:hover {
+    text-decoration: underline;
+    color:#1f71f6
+}
+
+
+#hero .description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: black;
+    margin: 0;
+    font-weight:300;
+    max-width: 50rem; /* Increased max-width for better text wrapping */
+    text-align: justify; /* Text alignment to both sides */
+}
+
+.abstract-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+#hero a {
+    color: black;
+    text-decoration: none;
+}
+
+#hero a:hover {
+    color: #ccc;
+}
+
+.teaser-container {
+    display: flex;
+    justify-content: space-between; /* Space between each video */
+    width: 50%;
+    margin: 0 auto; /* Center the container */
+    height: 15rem; /* Fixed height */
+}
+
+.teaser-wrapper {
+    flex: 1; /* Allow videos to grow and fill the container evenly */
+    margin: 0 0.5rem; /* Small gap between videos */
+}
+
+.teaser-wrapper video {
+    width: 100%; /* Make videos responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem; /* Space between buttons */
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    width: 5.5rem; /* Set a fixed width */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 0rem;
+    font-size: 0.8rem;
+}
+
+.button img{
+    color: #fff !important;
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+}
+
+.button:hover, .demo-button:hover, .dataset-button:hover {
+    background-color: #828181;
+    color: #fff;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-header h2{
+    text-align: center;
+    margin-top: 0rem; /* Adjusted margin top */
+    margin-bottom: 1rem;
+}
+
+.video-section {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: flex-start; /* Align videos to the top */
+    justify-content: space-around; /* Distribute space around items */
+    flex-wrap: nowrap; /* Prevent wrapping into multiple lines */
+    padding: 1.25rem;
+    background-color: #f4f4f4;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    width: 80%
+}
+
+.video-wrapper {
+    flex: 0 0 30%; /* Do not grow or shrink, set basis to 30% */
+    margin: 0rem; /* Reduced margin to bring videos closer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-wrapper video {
+    width: 90%;
+    aspect-ratio: 1/0.7;
+    object-fit: cover; /* Scale videos to fit within the container while maintaining aspect ratio */
+}
+
+.video-description {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 0.625rem;
+    color: #333;
+    white-space: nowrap; /* Do not wrap text */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis when text overflows */
+}
+
+.section-header {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-top: 0rem; /* Adjusted margin top */
+    margin-bottom: 0rem;
+}
+
+.large-header {
+    font-size: 2rem;
+}
+
+.small-text {
+    font-size: 1.25rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.demo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: -10rem;
+}
+
+.demo-content {
+    flex-basis: 35%;
+    margin-right: 1.25rem;
+    text-align: justify
+}
+
+.demo-video {
+    flex-basis: 55%;
+}
+
+#demo-video {
+    width: 100%;
+    height: auto;
+}
+
+.demo-content h2 {
+    font-size: 1.75rem;
+}
+
+.demo-content p {
+    font-size: 1rem;
+}
+
+.find-code-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    margin-top: 1.25rem;
+}
+
+.arrow-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 0.125rem solid #000;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.find-code-button:hover .arrow-circle {
+    background-color: #000;
+    color: #fff;
+}
+
+.method-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 4rem;
+}
+
+.method-content {
+    flex-basis: 45%;
+    margin-right: 1.25rem;
+    text-align: justify
+}
+
+.method-video {
+    flex-basis: 40%;
+}
+
+#method-video {
+    width: 100%;
+    height: auto;
+}
+
+.method-content h2 {
+    font-size: 1.75rem;
+}
+
+.method-content p {
+    font-size: 1rem;
+}
+
+.read-paper-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    margin-top: 1.25rem;
+}
+
+.arrow-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 0.125rem solid #000;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.read-paper-button:hover .arrow-circle {
+    background-color: #000;
+    color: #fff;
+}
+
+.gallery-section {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    margin-top: 4rem;
+}
+
+.gallery {
+    position: relative;
+    width: 18%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin: 0 0.625rem;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-container img.active {
+    opacity: 1;
+}
+
+.scroll-container {
+    background-color: #f7f4f4;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .scroll-container video {
+    padding: 0;
+    margin: 0 5px; /* Reduced margin between videos */
+    width: 10rem; /* Adjust the width as needed */
+    height: 10rem; /* Adjust the height as needed */
+    display: inline-block;
+  }
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.625rem;
+    pointer-events: none;
+}
+
+.prev-button,
+.next-button {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333333;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    pointer-events: auto;
+}
+
+.prev-button {
+    left: 0.5rem;
+}
+
+.next-button {
+    right: 0.5rem;
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: #ffffff;
+}
+
+.prev-button:focus,
+.next-button:focus {
+    outline: none;
+}
+
+
+.dataset-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 6rem;
+}
+
+.dataset-content {
+    flex-basis: 40%;
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+    text-align: justify
+}
+
+.dataset-video {
+    flex-basis: 50%;
+    margin-right: 0rem;
+}
+
+#dataset-video {
+    width: 100%;
+    height: auto;
+}
+
+.dataset-content h2 {
+    font-size: 1.75rem;
+}
+
+.dataset-content p {
+    font-size: 1rem;
+}
+
+.read-paper-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    margin-top: 1.25rem;
+}
+
+.arrow-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 0.125rem solid #000;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.read-paper-button:hover .arrow-circle {
+    background-color: #000;
+    color: #fff;
+}
+
+.title-center {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    margin-top: 5rem;
+    margin-bottom: 10px;
+}
+
+
+.bibtex-container {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    background-color: #f6f8fa;
+    border: 1px solid #d1d5da;
+    padding: 20px;
+    border-radius: 6px;
+    font-size:1rem;
+    margin-bottom: 2rem;
+    text-align:left;
+}
+
+.bibtex-entry {
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    white-space: pre-wrap;
+    font-size:1rem;
+    overflow-x: auto;
+    margin-bottom: 0px;
+    
+
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    background-color: #424141;
+    color: white;
+    border: 1px solid black; /* Corrected border property */
+    border-radius: 1rem;
+    cursor: pointer;
+    height:2rem;
+    width:2rem
+}
+.copy-button img {
+    margin-top: 0.2rem;
+    margin-left: 0.1rem;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.copy-button:hover {
+background-color: #606260;
+}
+
+/* Media Queries for Mobile Devices */
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    /* Adjust overall body and container settings for better mobile viewing */
+    body {
+        font-size: 14px; /* Smaller base font size */
+    }
+
+    /* Header and navigation styles for better visibility on small screens */
+    nav {
+        flex-direction: row; /* Keep navigation in a row but adjust spacing */
+        flex-wrap: wrap;
+        justify-content: center; /* Center navigation items */
+        padding: 10px 0; /* Add some padding for touch targets */
+    }
+
+    .logo {
+        font-size: 1.2rem; /* Adjust logo size for mobile */
+        margin-bottom: 10px; /* Add margin below logo for clarity */
+    }
+
+    nav ul {
+        width: 100%; /* Full width to accommodate wrapped items */
+        justify-content: center; /* Center the items */
+    }
+
+    nav ul li {
+        margin: 5px; /* Reduce margin for compact navigation */
+    }
+
+    nav ul li a {
+        font-size: 0.9rem; /* Smaller font size for navigation links */
+    }
+
+    /* Hero section specific adjustments */
+    #hero {
+        padding: 20px; /* Uniform padding around the hero section */
+        margin-bottom: 0px; /* Space below hero section */
+        height: 160vh;
+    }
+
+    #hero h1, #hero h2 {
+        font-size: 1.5rem; /* Suitable size for primary headings */
+    }
+
+    /* Button container adjustments for better layout */
+    .button-container {
+        flex-direction: row; /* Maintain row layout for buttons */
+        flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+        justify-content: center; /* Center buttons horizontally */
+        gap: 10px; /* Space between buttons */
+    }
+
+    .button {
+        flex: 1 0 10%; /* Allow buttons to grow and take up roughly half the space */
+        max-width: 160px; /* Max width for each button */
+        padding: 8px 12px; /* Padding adjustment */
+        font-size: 0.8rem; /* Font size adjustment for readability */
+        text-align: center; /* Ensure text is centered inside buttons */
+    }
+
+    /* Teaser container adjustments to keep videos in one row */
+    .teaser-container {
+        flex-direction: row; /* Keep teasers in a row */
+        align-items: center; /* Center items vertically */
+        width: 90%
+    }
+
+    .teaser-wrapper {
+        flex: 1 0 auto; /* Flex grow, no shrink, auto basis */
+        width: 30%; /* Each teaser takes half of the container width */
+        max-width: 30%; /* Maximum width for each teaser */
+    }
+
+    .teaser-wrapper video {
+        width: 100%; /* Ensure video fills the teaser wrapper */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Adjust description text for better readability */
+    #hero .description {
+        font-size: 0.9rem;
+        padding: 0 5%;
+        text-align: justify;
+        margin-top:0rem
+    }
+    .video-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .video-wrapper video {
+        height: auto;
+    }
+
+    .video-description {
+        font-size: 0.75rem;
+        margin-top: 0.75rem;
+    }
+
+    .section-header {
+        font-size: 1.25rem;
+        margin: 1rem 0;
+    }
+
+    .large-header, .method-content h2, .demo-content h2, .dataset-content h2, .demo-section {
+        font-size: 1rem;
+    }
+
+    .small-text,
+    .method-content p,
+    .dataset-content,
+    .demo-content p,
+    .find-code-button,
+    .read-paper-button,
+    .dataset-content p {
+        font-size: 0.75rem;
+        text-align: justify;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .demo-section,
+    .method-section,
+    .dataset-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        margin: 0;
+        align-items: center;
+    }
+
+    .demo-section {
+        margin-top: 0rem;
+    }
+
+    .demo-content,
+    .method-content,
+    .dataset-content {
+        flex-basis: 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .demo-video,
+    .method-video,
+    .dataset-video {
+        flex-basis: 100%;
+        margin-top: 1rem;
+    }
+
+    .gallery-section {
+        padding: 2rem 1rem;
+        margin-top: 0rem;
+    }
+
+    .gallery-row {
+        flex-direction: column;
+        margin-top: 2rem;
+        align-items: center;
+    }
+
+    .gallery {
+        width: 80%;
+        margin: 1rem 0;
+        align-items: center;
+    }
+
+    .navigation {
+        padding: 0 1rem;
+    }
+
+    .prev-button,
+    .next-button {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        width: 2rem;
+        height: 2.5rem;
+    }
+
+    .method-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        margin: 0;
+    }
+
+    .method-content {
+        flex-basis: 100%;
+        margin-right: 0;
+        text-align: center;
+        order: 1;
+    }
+
+    .method-video {
+        flex-basis: 100%;
+        margin-top: 1rem;
+        order: 2;
+    }
+
+    .bibtex-entry {
+        font-size:0.5rem;
+    }
+
+    .title-center {
+        font-size: 1.2rem;
+    }
+
+    .bibtex-container {
+        width: 90%;
+    }
+}

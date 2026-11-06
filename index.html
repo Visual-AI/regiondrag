@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegionDrag</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="icon" sizes="32x32" type="image/jpeg" href="assets/icons/visailab.jpeg">
+</head>
+<body>
+
+    <main>
+        <section id="hero">
+            <div class="text-content">
+                <h1>RegionDrag: Fast Region-Based Image<br>Editing with Diffusion Models</h1>
+                <h2>ECCV 2024</h2>
+                <p class="contributors">
+                    Jingyi Lu<sup>1</sup>,
+                    <a href="https://xinghui-li.github.io/" target="_blank" class="text-link">Xinghui Li</a><sup>2</sup>, 
+                    <a href="https://www.kaihan.org/" target="_blank" class="text-link">Kai Han</a><sup>1</sup>
+                    <br>
+                    <sup>1</sup><a href="https://visailab.github.io/index.html" target="_blank" class="text-link">Visual AI Lab</a>, The University of Hong Kong<br>
+                    <sup>2</sup><a href="https://www.robots.ox.ac.uk/ActiveVision/" target="_blank" class="text-link">Active Vision Lab</a>, University of Oxford
+                </p>
+                
+                <div class="button-container">
+                    <a href="https://arxiv.org/pdf/2407.18247.pdf" target="_blank" class="button" download="RegionDrag.pdf">
+                        <img src="assets/icons/pdf-icon.svg" alt="Paper Icon">
+                        Paper
+                    </a>
+                    <a href="https://arxiv.org/abs/2407.18247" target="_blank" class="button">
+                        <img src="assets/icons/arxiv-icon.svg" alt="arXiv Icon">
+                        arXiv
+                    </a>
+                    <a href="https://github.com/Visual-AI/RegionDrag" target="_blank" class="button">
+                        <img src="assets/icons/github-icon.svg" alt="Code Icon">
+                        Code
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1pnq9t_1zZ8yL_Oba20eBLVZLp3glniBR?usp=sharing" target="_blank" class="button">
+                        <img src="assets/icons/demo-icon.svg" alt="Demo Icon">
+                        Demo
+                    </a>
+                    <a href="#dataset" class="button">
+                        <img src="assets/icons/data-icon.svg" alt="Dataset Icon">
+                        Dataset
+                    </a>
+                    <a href="#gallery" class="button">
+                        <img src="assets/icons/gallery-icon.svg" alt="Gallery Icon">
+                        Gallery
+                    </a>
+                    <a href="#bibtex" class="button">
+                        <img src="assets/icons/bibtex-icon.svg" alt="Bibtex Icon">
+                        BibTeX
+                    </a>
+                </div>
+
+                <div class="teaser-container">
+                    <div class="teaser-wrapper">
+                        <video src="assets/videos/monna.mp4" alt="Video 1" autoplay muted loop playsinline></video>
+                    </div>
+                    <div class="teaser-wrapper">
+                        <video src="assets/videos/mountain.mp4" alt="Video 2" autoplay muted loop playsinline></video>
+                    </div>
+                    <div class="teaser-wrapper">
+                        <video src="assets/videos/woman.mp4" alt="Video 3" autoplay muted loop playsinline></video>
+                    </div>
+                </div>
+                
+                
+             
+                <p class="description">
+                    RegionDrag, a region-based image editing method, offers faster and more precise image editing than point-drag approaches by enabling users to express instructions through 
+                    <span style="color: red;">handle</span> and 
+                    <span style="color: blue;">target</span> regions, significantly outperforming the previous SOTA in speed while achieving better performance.
+                </p>
+                
+
+
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <h2 class="large-header">RegionDrag supports a variety of inputs</h2>
+                <p class="small-text">Users can input regions or points to drag image contents from <span style="color: red;">Red</span> to <span style="color: blue;">Blue</span>.</p>
+            </div>
+        
+            <div class="video-section">
+                <div class="video-wrapper">
+                    <video class="sync-video" autoplay muted loop playsinline>
+                        <source src="assets/polygon_pairs.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">Input pairs of triangles or quadrilaterals.</p>
+                </div>
+                <div class="video-wrapper">
+                    <video class="sync-video" autoplay muted loop playsinline>
+                        <source src="assets/region_points.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">Input regions and manipulate them by points.</p>
+                </div>
+                <div class="video-wrapper">
+                    <video class="sync-video" autoplay muted loop playsinline>
+                        <source src="assets/region_pairs.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">Input pairs of regions.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="demo" class="demo-section">
+            <div class="demo-content">
+                <h2>Fast AI editing</h2>
+                <p>The rich context provided by region inputs allows users to edit a 512x512 image in just 1.5 seconds, significantly faster than previous point-drag methods.</p>
+                <a href="https://github.com/Visual-AI/RegionDrag" target="_blank" class="find-code-button">
+                    <span class="arrow-circle">&#8594;</span> Find our code
+                </a>
+            </div>
+            <div class="demo-video">
+                <video id="demo-video" autoplay muted playsinline loop>
+                    <source src="assets/time_compare.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section id="method" class="method-section">
+            <div class="method-video">
+                <video id="method-video" autoplay muted playsinline loop>
+                    <source src="assets/pipe.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="method-content">
+                <h2>Efficient & concise model design</h2>
+                <p>We use the inputs for editing through two main steps. First, during the inversion process, the SD latent representations and self-attention features are copied from the handle region. Then, during the denoising process, we paste the copied latent representations at the target positions and replace the corresponding self-attention features.</p>
+                <a href="https://arxiv.org/abs/2407.18247" target="_blank" class="read-paper-button">
+                    <span class="arrow-circle">&#8594;</span> Read the paper
+                </a>
+            </div>  
+        </section>
+        
+        <section id="dataset" class="dataset-section">
+            <div class="dataset-content">
+                <h2>New benchmarks for region-based editing evaluation</h2>
+                <p><a href="https://github.com/ML-GSAI/SDE-Drag" target="_blank" style="color: #1f71f6; text-decoration: none;">DragBench-S</a> and <a href="https://github.com/Yujun-Shi/DragDiffusion" target="_blank" style="color: #1f71f6; text-decoration: none;">DragBench-D</a> are existing benchmarks for evaluating point-drag methods. We modify these benchmarks to use regions instead of points to reflect user intentions, creating DragBench-SR and DragBench-DR (where R stands for 'Region').</p>
+                <a href="https://drive.google.com/file/d/1rdi4Rqka8zqHTbPyhQYtFC2UdWvAeAGV/view" target="_blank" class="read-paper-button">
+                    <span class="arrow-circle">&#8594;</span> Download the dataset
+                </a>
+            </div>  
+            <div class="dataset-video">
+                <video id="dataset-video" autoplay muted playsinline loop>
+                    <source src="assets/dragbench.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="gallery-header">
+                <h2 class="large-header">RegionDrag Gallery</h2>
+                <p class="small-text">RegionDrag achieves high-fidelity editing effects on various objects through movement of image contents from <span style="color: red;">Red</span> to <span style="color: blue;">Blue</span>.</p>
+            </div>
+        
+            <div class="scroll-container" id="scrollContainer">
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/toy.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/dog.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/elephant.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/art2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/horse.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/cup.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/car2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/elephant2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/pineapple.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/dog2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/island.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/flower.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/chicken.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/cloud.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/car.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/lion.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/hat.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/mountain2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/crocodile.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/bear.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <video autoplay muted loop playsinline>
+                <source src="assets/videos/art.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+        <h1 class="title-center">BibTeX</h1>
+        <div class="bibtex-container" id="bibtex">
+            <div class="bibtex-wrapper">
+                <pre class="bibtex-entry" id="bibtex-entry">
+    @inproceedings{lu2024regiondrag,
+        author    = {Jingyi Lu and Xinghui Li and Kai Han},
+        title     = {RegionDrag: Fast Region-Based Image Editing with Diffusion Models},
+        booktitle = {European Conference on Computer Vision (ECCV)},
+        year      = {2024},
+    }</pre>
+                <button class="copy-button" onclick="copyBibtex()">
+                    <img src="assets/icons/bibtex-icon.svg" alt="Copy Icon">
+                </button>
+            </div>
+        </div>
+        
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Scroll Container Auto-Scroll
+          const scrollContainer = document.getElementById('scrollContainer');
+          const videos = scrollContainer.getElementsByTagName('video');
+          const step = 1;
+          const delay = 30;
+          let direction = 1;
+          let intervalID;
+        
+          // Function to start scrolling
+          function startScrolling() {
+            scrollContainer.scrollLeft += step * direction;
+        
+            if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+              direction = -1;
+            } else if (scrollContainer.scrollLeft <= 0) {
+              direction = 1;
+            }
+          }
+        
+          // Function to start the scrolling interval
+          function startInterval() {
+            intervalID = setInterval(startScrolling, delay);
+          }
+        
+          // Function to stop the scrolling interval
+          function stopInterval() {
+            clearInterval(intervalID);
+          }
+        
+          // Synchronize video playback
+          function synchronizeVideos() {
+            for (let video of videos) {
+              video.currentTime = 0; // Reset to start
+              video.play();
+            }
+          }
+        
+          // Ensure videos are ready before synchronizing
+          function checkVideosReady() {
+            let allReady = true;
+            for (let video of videos) {
+              if (video.readyState < 3) { // HAVE_FUTURE_DATA
+                allReady = false;
+                break;
+              }
+            }
+            if (allReady) {
+              synchronizeVideos();
+            } else {
+              setTimeout(checkVideosReady, 100);
+            }
+          }
+        
+          // Event listeners for scroll container
+          scrollContainer.addEventListener('mouseover', stopInterval);
+          scrollContainer.addEventListener('mouseout', startInterval);
+          scrollContainer.addEventListener('wheel', function(event) {
+            clearInterval(intervalID); // Stop auto-scrolling on wheel
+            scrollContainer.scrollLeft += event.deltaY;
+          });
+        
+          // Start the initial check for video readiness and scrolling interval
+          checkVideosReady();
+          startInterval();
+        
+          // Gallery Auto-Scroll
+          const galleries = document.querySelectorAll('.gallery');
+        
+          galleries.forEach(gallery => {
+            const galleryContainer = gallery.querySelector('.gallery-container');
+            const prevButton = gallery.querySelector('.prev-button');
+            const nextButton = gallery.querySelector('.next-button');
+            const images = gallery.querySelectorAll('.gallery-container img');
+        
+            let currentIndex = 0;
+            let intervalId;
+        
+            // Function to update gallery images
+            function updateGallery() {
+              images.forEach((image, index) => {
+                image.classList.toggle('active', index === currentIndex);
+              });
+            }
+        
+            // Function to start auto-scrolling
+            function startAutoScroll() {
+              intervalId = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateGallery();
+              }, 2000);
+            }
+        
+            // Function to reset auto-scroll
+            function resetAutoScroll() {
+              clearInterval(intervalId);
+              startAutoScroll();
+            }
+        
+            // Event listeners for gallery navigation buttons
+            prevButton.addEventListener('click', () => {
+              currentIndex = (currentIndex - 1 + images.length) % images.length;
+              updateGallery();
+              resetAutoScroll();
+            });
+        
+            nextButton.addEventListener('click', () => {
+              currentIndex = (currentIndex + 1) % images.length;
+              updateGallery();
+              resetAutoScroll();
+            });
+        
+            // Start gallery auto-scroll
+            startAutoScroll();
+          });
+        
+          // Copy BibTeX to clipboard
+          function copyBibtex() {
+            const bibtexEntry = document.getElementById('bibtex-entry').innerText.trim();
+            navigator.clipboard.writeText(bibtexEntry).then(() => {
+              alert('BibTeX copied to clipboard. Thank you for citing RegionDrag.');
+            }).catch(err => {
+              console.error('Failed to copy: ', err);
+            });
+          }
+        
+          // Event listener for copy button
+          document.querySelector('.copy-button').onclick = copyBibtex;
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const videos = document.querySelectorAll('.scroll-container video'); // Select all videos within the scroll-container
+        
+        let loadedCount = 0; // Counter to track loaded videos
+        let longestDuration = 0; // To keep track of the longest video duration
+
+        // Function to check if all videos are ready
+        const checkAllVideosReady = () => {
+            if (loadedCount === videos.length) {
+                // Calculate the playback rate for each video
+                videos.forEach(video => {
+                    video.playbackRate = longestDuration / video.duration;
+                    video.play(); // Play all videos when all are loaded
+                });
+            }
+        };
+
+        // Add event listeners to each video
+        videos.forEach(video => {
+            video.addEventListener('canplaythrough', () => {
+                loadedCount++; // Increment the counter when a video can play through
+                longestDuration = Math.max(longestDuration, video.duration); // Update the longest duration
+                checkAllVideosReady(); // Check if all videos are ready
+            });
+
+            video.load(); // Trigger loading of the video
+        });
+    });
+        </script>
+</body>
+</html>
